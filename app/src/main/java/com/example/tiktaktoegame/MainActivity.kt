@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         return !gameState.contains(2)
     }
 
-    fun gameReset(view: View?) {
+    fun gameReset(view:  View?) {
         gameActive = true
         activePlayer = 0
         gameState = intArrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
