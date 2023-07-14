@@ -2,28 +2,21 @@ package com.example.tiktaktoegame
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    var gameActive = true
+    var gameActive = true  //gameActive tells whether the game is active or not
 
 
 
 
-    // Player representation
-    // 0 - X
-    // 1 - O
-    var activePlayer = 0
-    var gameState = intArrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
+    var activePlayer = 0 //Active player is X<-0 and 1->O
+    var gameState = intArrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)  //it represents the the state of each cell with 2s that means it is empty(NULL) is 0 -> x else 1 -> O
 
-    // State meanings:
-    //    0 - X
-    //    1 - O
-    //    2 - Null
 
     // put all win positions in a 2D array
     var winPositions = arrayOf(
@@ -40,6 +33,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val resetButton = findViewById<Button>(R.id.resetButton)
+        resetButton.setOnClickListener { gameReset() }
+
     }
 
     fun playerTap(view: View) {
@@ -47,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val tappedImage = img.tag.toString().toInt()
 
         if (!gameActive) {
-            gameReset(view)
+            gameReset()
             return
         }
 
@@ -100,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         return !gameState.contains(2)
     }
 
-    fun gameReset(view: View?) {
+    fun gameReset() {
         gameActive = true
         activePlayer = 0
         gameState = intArrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
