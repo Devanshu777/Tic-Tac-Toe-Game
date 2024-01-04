@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 img.setImageResource(R.drawable.x)
                 activePlayer = 1
                 val status = findViewById<TextView>(R.id.status)
-                status.text = "O's Turn - Tap to play"
+                status.text = "harsh turn"
             } else {
                 img.setImageResource(R.drawable.o)
                 activePlayer = 0
